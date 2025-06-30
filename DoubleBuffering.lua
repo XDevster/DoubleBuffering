@@ -1,5 +1,5 @@
 -- Автор: XDevster
--- Версия: 1.0
+-- Версия: 1.1
 -- Дата: 2025-06-16
 
 local component = require("component")
