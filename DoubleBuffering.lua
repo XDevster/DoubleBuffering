@@ -157,6 +157,23 @@ function buffer.getLastError()
     return lastError
 end
 
+function buffer.stop()
+    if not bufferInitialized then return end
+    
+    if useHardwareBuffering then
+        pcall(function()
+            if backBuffer then gpu.freeBuffer(backBuffer) end
+            if frontBuffer then gpu.freeBuffer(frontBuffer) end
+        end)
+    end
+    
+    backBuffer = nil
+    frontBuffer = nil
+    bufferInitialized = false
+    lastError = nil
+    return true
+end
+
 function buffer.clear(fg, bg)
     if not bufferInitialized then return false end
 
